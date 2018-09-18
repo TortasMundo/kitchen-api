@@ -3,7 +3,7 @@ module.exports = {
     client: 'postgresql',
     searchPath: 'public',
     connection: {
-      database: 'development',
+      database: 'tm_development',
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
@@ -14,7 +14,7 @@ module.exports = {
     client: 'postgresql',
     searchPath: 'public',
     connection: {
-      database: 'test',
+      database: 'tm_test',
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
