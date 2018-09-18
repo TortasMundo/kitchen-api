@@ -5,10 +5,8 @@ module.exports = [
     method: 'post',
     path: '/orders/list',
     action: async ctx => {
-      ctx.body = {
-        success: true,
-        data: await orderService.list(ctx),
-      }
+      const orders = await orderService.list(ctx)
+      ctx.body = orders
     },
   },
 ]
