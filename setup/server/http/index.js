@@ -16,8 +16,15 @@ class HttpServer {
     endpoints.map(endpoint => {
       router[endpoint.method](endpoint.path, endpoint.action)
     })
+    const whitelist = ['https://tortasmundo-orders-display.herokuapp.com', 'http://localhost:3000'];
     app.use(cors({
-      origin: 'https://tortasmundo-orders-display.herokuapp.com'
+      origin: (ctx) => {
+        const requestOrigin = ctx.accept.headers.origin;
+        if (!whitelist.includes(requestOrigin)) {
+          return ctx.throw(`🙈 ${requestOrigin} is not a valid origin`);
+        }
+        return requestOrigin;
+      }
     }))
     app.use(async (ctx, next) => {
       ctx.knex = config.getKnex(ctx.request.headers['is-test'])
@@ -25,6 +32,7 @@ class HttpServer {
     })
     app.use(bodyParser())
   }
+
   start(socketServer) {
     app.use(async (ctx, next) => {
       ctx.socketServer = socketServer
