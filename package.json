@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/TortasMundo/kitchen-api#readme",
   "dependencies": {
+    "@koa/cors": "^2.2.2",
     "bluebird": "^3.5.1",
     "body": "^5.1.0",
     "chai": "^4.1.2",
