@@ -6,7 +6,7 @@ class SocketServer {
     const sockerServer = socketIO(httpServer)
     sockerServer.on('connection', socket => {
       channelListeners.map(l => {
-        socket.on(l.channel, l.action)
+        socket.on(l.channel, l.action(socket))
       })
     })
     return sockerServer
