@@ -7,6 +7,8 @@ const httpServer = new HttpServer([
   ...orderWebEndpoints
 ])
 
-const socketServer = new SocketServer(httpServer.server, [orderPlacementChannel])
+const socketServer = new SocketServer(httpServer.server, [
+  ...orderPlacementChannel
+])
 
 httpServer.start(socketServer)
