@@ -8,5 +8,8 @@ module.exports = [{
       storeLocation.latitude,
       socket.id,
     )
+    socket.on('disconnect', async () => {
+      await socket.redis.zrem('kitchen_sockets_for_order_placements', socket.id)
+    })
   },
 }]
