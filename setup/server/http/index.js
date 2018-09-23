@@ -16,7 +16,7 @@ class HttpServer {
     endpoints.map(endpoint => {
       router[endpoint.method](endpoint.path, endpoint.action)
     })
-    app.use(cors(true))
+    app.use(cors(false))
     app.use(async (ctx, next) => {
       ctx.knex = config.getKnex(ctx.request.headers['is-test'])
       return await next()
