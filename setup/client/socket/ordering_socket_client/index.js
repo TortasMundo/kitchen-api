@@ -15,10 +15,11 @@ class OrderingSocketClient {
         'kitchen_sockets_for_order_placements',
         response.data.customerLocationLongitude,
         response.data.customerLocationLatitude,
-        '20',
+        '200',
         'km'
       )
       const socketId = socketIds[0]
+
       if (Object.keys(this.socketServer.sockets.server.eio.clients).includes(socketId)) {
         await this.socketServer.to(socketId).emit('placed_order', response.data)
       } else if (socketId) {
