@@ -12,5 +12,5 @@ const createRedisClient = (database) => redis.createClient(config.redis_host, {
 })
 
 module.exports = {
-  getRedisClient: (isTest) => createRedisClient(isTest ? 0 : 1)
+  getRedisClient: (isTest) => createRedisClient(isTest ? 1 : 0)
 }
