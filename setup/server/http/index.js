@@ -16,7 +16,7 @@ class HttpServer {
     endpoints.map(endpoint => {
       router[endpoint.method](endpoint.path, endpoint.action)
     })
-    app.use(cors('https://tortasmundo-orders-display.herokuapp.com'))
+    app.use(cors({ origin: 'https://tortasmundo-orders-display.herokuapp.com' }))
     app.use(async (ctx, next) => {
       ctx.knex = config.getKnex(ctx.request.headers['is-test'])
       return await next()
