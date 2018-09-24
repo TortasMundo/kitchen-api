@@ -16,7 +16,7 @@ class HttpServer {
     endpoints.map(endpoint => {
       router[endpoint.method](endpoint.path, endpoint.action)
     })
-    app.use(cors({ origin: 'https://tortasmundo-orders-display.herokuapp.com' }))
+    app.use(cors({ origin: true }))
     app.use(bodyParser())
   }
 
