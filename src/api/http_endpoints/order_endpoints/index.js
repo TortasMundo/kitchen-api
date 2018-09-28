@@ -9,4 +9,14 @@ module.exports = [
       ctx.body = orders
     },
   },
+  {
+    method: 'post',
+    path: '/orders/update_status',
+    action: async ctx => {
+      await orderService.updateStatus(ctx)
+      ctx.body = {
+        success: true
+      }
+    },
+  },
 ]
