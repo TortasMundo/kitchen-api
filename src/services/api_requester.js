@@ -6,7 +6,11 @@ api_requester.send = async (request, headers) => {
   const info = {
     method: request.method,
     body: request.method === 'GET' ? undefined : JSON.stringify(request.body),
-    headers
+    headers: {
+      'Content-Type': 'application/json',
+      'is-test': headers['is-test'],
+      'timezone': headers['timezone'],
+    }
   }
   try {
     const res = await fetch(request.uri + '/' + request.path, info)
